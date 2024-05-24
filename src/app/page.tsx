@@ -1,67 +1,37 @@
-import Link from "next/link";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import Image from "next/image";
 
-import { CreatePost } from "@/app/_components/create-post";
-import { getServerAuthSession } from "@/server/auth";
-import { api } from "@/trpc/server";
+// import { CreatePost } from "@/app/_components/create-post";
+// import { getServerAuthSession } from "@/server/auth";
+// import { api } from "@/trpc/server";
 
 export default async function Home() {
-  const hello = await api.post.hello({ text: "from tRPC" });
-  const session = await getServerAuthSession();
+  // const hello = await api.post.hello({ text: "from tRPC" });
+  // const session = await getServerAuthSession();
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center bg-gradient-to-b from-[#2e026d] to-[#15162c] text-white">
-      <div className="container flex flex-col items-center justify-center gap-12 px-4 py-16 ">
-        <h1 className="text-5xl font-extrabold tracking-tight sm:text-[5rem]">
-          Create <span className="text-[hsl(280,100%,70%)]">T3</span> App
-        </h1>
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:gap-8">
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/usage/first-steps"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">First Steps →</h3>
-            <div className="text-lg">
-              Just the basics - Everything you need to know to set up your
-              database and authentication.
+    <div className="bg-slate-50">
+      <section>
+        <MaxWidthWrapper className="pb-24 pt-10 sm:pb-32 lg:grid lg:grid-cols-3 lg:gap-x-0 lg:pb-52 lg:pt-24 xl:gap-x-8 xl:pt-32">
+          <div className="col-span-2 px-6 lg:px-0 lg:pt-4">
+            <div className="relative mx-auto flex flex-col items-center text-center lg:items-start lg:text-left">
+              <div className="absolute -top-20 left-0 hidden w-28 lg:block">
+                <img src="/snake-1.png" className="w-full" />
+              </div>
+              <h1 className="relative mt-16 w-fit text-balance text-5xl font-bold !leading-tight tracking-tight text-gray-900 md:text-6xl lg:text-7xl">
+                Your Idea on a{" "}
+                <span className="bg-red-600 px-2 text-white">Custom</span> piece
+                of art!
+              </h1>
             </div>
-          </Link>
-          <Link
-            className="flex max-w-xs flex-col gap-4 rounded-xl bg-white/10 p-4 hover:bg-white/20"
-            href="https://create.t3.gg/en/introduction"
-            target="_blank"
-          >
-            <h3 className="text-2xl font-bold">Documentation →</h3>
-            <div className="text-lg">
-              Learn more about Create T3 App, the libraries it uses, and how to
-              deploy it.
-            </div>
-          </Link>
-        </div>
-        <div className="flex flex-col items-center gap-2">
-          <p className="text-2xl text-white">
-            {hello ? hello.greeting : "Loading tRPC query..."}
-          </p>
-
-          <div className="flex flex-col items-center justify-center gap-4">
-            <p className="text-center text-2xl text-white">
-              {session && <span>Logged in as {session.user?.name}</span>}
-            </p>
-            <Link
-              href={session ? "/api/auth/signout" : "/api/auth/signin"}
-              className="rounded-full bg-white/10 px-10 py-3 font-semibold no-underline transition hover:bg-white/20"
-            >
-              {session ? "Sign out" : "Sign in"}
-            </Link>
           </div>
-        </div>
-
-        <CrudShowcase />
-      </div>
-    </main>
+        </MaxWidthWrapper>
+      </section>
+    </div>
   );
 }
 
+/*
 async function CrudShowcase() {
   const session = await getServerAuthSession();
   if (!session?.user) return null;
@@ -80,3 +50,4 @@ async function CrudShowcase() {
     </div>
   );
 }
+*/
