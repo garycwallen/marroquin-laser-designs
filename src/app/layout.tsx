@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { GeistSans } from "geist/font/sans";
 
 import { TRPCReactProvider } from "@/trpc/react";
+import Navbar from "@/components/Navbar";
 
 export const metadata = {
   title: "Marroquin Laser Designs",
@@ -18,7 +19,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${GeistSans.variable}`}>
       <body>
-        <TRPCReactProvider>{children}</TRPCReactProvider>
+        <TRPCReactProvider>
+          <Navbar />
+          {children}</TRPCReactProvider>
       </body>
     </html>
   );
