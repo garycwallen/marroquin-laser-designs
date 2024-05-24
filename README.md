@@ -9,5 +9,6 @@
 - [NextAuth.js](https://next-auth.js.org)
 - [PostgreSQL](https://www.postgresql.org/) via [Supabase](https://supabase.com/)
 - [Prisma](https://prisma.io)
+- [shadcn/ui](https://ui.shadcn.com/)
 - [Tailwind CSS](https://tailwindcss.com)
 - [tRPC](https://trpc.io)
